@@ -20,8 +20,8 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Broker API")
-                        .description("channel to engine total broker")
+                .info(new Info().title("Toy API")
+                        .description("Toy for improve skills")
                         .version("v0.0.1"));
     }
 }
