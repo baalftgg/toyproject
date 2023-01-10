@@ -13,22 +13,21 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
 @Table(name = "product")
-public class Product {
+public class Product{
 
     @Id
-    String productId;
-    String productName;
-    Integer productPrice;
-    Integer productStock;
+    String id;
+    String name;
+    Integer price;
+    Integer stock;
 
-//    public ProductDTO toDTO(){
-//        return ProductDTO.builder()
-//                .productId(ProductId)
-//                .productName(ProductName)
-//                .productPrice(ProductPrice)
-//                .productStock(ProductStock)
-//                .build();
-//    }
+    public ProductDTO toDTO(){
+        return ProductDTO.builder()
+                .productId(id)
+                .productName(name)
+                .productPrice(price)
+                .productStock(stock)
+                .build();
+    }
 }

@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
 public class ProductDTO {
 
@@ -33,10 +34,10 @@ public class ProductDTO {
 
     public Product toEntity(){
         return Product.builder()
-                .productId(productId)
-                .productName(productName)
-                .productPrice(productPrice)
-                .productStock(productStock)
+                .id(productId)
+                .name(productName)
+                .price(productPrice)
+                .stock(productStock)
                 .build();
     }
 
