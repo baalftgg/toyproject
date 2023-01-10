@@ -1,5 +1,6 @@
 package com.example.project_toy.product.dto;
 
+import com.example.project_toy.product.entity.Product;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -10,7 +11,6 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Builder
 public class ProductDTO {
 
