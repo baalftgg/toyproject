@@ -1,4 +1,4 @@
-package com.example.project_toy.product.dto;
+package com.example.project_toy.product.data.dto;
 
 import lombok.*;
 

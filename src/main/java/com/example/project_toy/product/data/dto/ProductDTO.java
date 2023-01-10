@@ -1,6 +1,6 @@
-package com.example.project_toy.product.dto;
+package com.example.project_toy.product.data.dto;
 
-import com.example.project_toy.product.entity.Product;
+import com.example.project_toy.product.data.entity.Product;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -33,10 +33,10 @@ public class ProductDTO {
 
     public Product toEntity(){
         return Product.builder()
-                .id(productId)
-                .name(productName)
-                .price(productPrice)
-                .stock(productStock)
+                .productId(productId)
+                .productName(productName)
+                .productPrice(productPrice)
+                .productStock(productStock)
                 .build();
     }
 
