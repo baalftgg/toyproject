@@ -3,6 +3,20 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://192.168.110.221:3309/aice_log?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    url: jdbc:mariadb://192.168.110.221:3305/practice_project
     username: root
-    password: 2022aice
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace
+      SQL: DEBUG
