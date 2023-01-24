@@ -1,52 +1,48 @@
 package com.example.project_toy.product.product.service;
 
-import com.example.project_toy.product.product.dto.Product;
+import com.example.project_toy.product.product.dto.ProductResponseDto;
+import com.example.project_toy.product.product.dto.ProductSaveRequestDto;
 import com.example.project_toy.product.product.repository.ProductRepository;
-import com.example.project_toy.product.product.entity.ProductEntity;
+import com.example.project_toy.product.product.entity.Product;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
 
-    ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-    @Autowired
-    public ProductService(ProductRepository productRepository){
-        this.productRepository = productRepository;
+    @Transactional
+    public ProductResponseDto registerProduct(ProductSaveRequestDto productSaveRequestDto) {
+        Product product = ProductSaveRequestDto.create(productSaveRequestDto);
+        Product savedProduct = productRepository.save(product);
+        return ProductResponseDto.toEntity(savedProduct);
     }
 
-
-    public Product addProduct(int No, String Name, int TypeNo, int Price, LocalDateTime registerDateTime){
-        ProductEntity productEntity = new ProductEntity(No, Name, TypeNo, Price, registerDateTime);
-        productRepository.save(productEntity);
-        Product product = new Product(productEntity.getNo(), productEntity.getName(), productEntity.getTypeNo(), productEntity.getPrice(), productEntity.getRegisterDatetime());
-
-        return product;
-    }
-
-    public List<ProductEntity> listProducts() {
+    @Transactional
+    public List<Product> listProducts() {
         return productRepository.findAll();
     }
 
-    public Product getByProductNo(int productNo){
-        ProductEntity productEntity = productRepository.getById(productNo);
-        Product product = new Product(productEntity.getNo(), productEntity.getName(), productEntity.getTypeNo(), productEntity.getPrice(), productEntity.getRegisterDatetime());
-        return product;
+    @Transactional
+    public ProductResponseDto getByProductNo(int productNo){
+        Product product = productRepository.getReferenceById(productNo);
+        return ProductResponseDto.toEntity(product);
     }
 
-//    public int edit(productNo, product){
-//        ProductEntity productEntity = productRepository.findById()
-//    }
+    @Transactional
+    public ProductResponseDto editProduct(int productNo, ProductSaveRequestDto request) {
+        Product product = productRepository.getReferenceById(productNo);
+        product.update(request);
+        return ProductResponseDto.toEntity(product);
+    }
 
+    @Transactional
     public void deleteProduct(int productNo) {
         productRepository.deleteById(productNo);
     }
-
-
 }
