@@ -14,9 +14,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PutMapping("/{memberId}/{productId}")
-    public String order(@PathVariable Map<Integer, Integer> pathVasrMap) {
-        int memberId = pathVasrMap.get("memberId");
-        int productId = pathVasrMap.get("productId");
+    public String order(@PathVariable int memberId, int productId) {
         String msg = orderService.order(memberId, productId);
         return msg;
     }

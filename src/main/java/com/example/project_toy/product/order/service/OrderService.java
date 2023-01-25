@@ -2,7 +2,6 @@ package com.example.project_toy.product.order.service;
 
 import com.example.project_toy.product.member.entity.Member;
 import com.example.project_toy.product.member.repository.MemberRepository;
-import com.example.project_toy.product.order.repository.OrderRepository;
 import com.example.project_toy.product.product.entity.Product;
 import com.example.project_toy.product.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +17,6 @@ public class OrderService {
     private final ProductRepository productRepository;
 
     private final MemberRepository memberRepository;
-
-    private final OrderRepository orderRepository;
 
     public String order(int memberid, int productid) {
         Member member = memberRepository.getReferenceById(memberid);
