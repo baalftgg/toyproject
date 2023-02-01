@@ -29,7 +29,6 @@ public class Member {
 
     private Date registdate;
 
-    private String grade;
 
     public void order(int restcash) {
         this.cash = restcash;

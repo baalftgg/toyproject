@@ -2,6 +2,7 @@ package com.example.project_toy.product.product.service;
 
 import com.example.project_toy.product.product.dto.ProductResponseDto;
 import com.example.project_toy.product.product.dto.ProductSaveRequestDto;
+import com.example.project_toy.product.product.exception.ProductNotFoundException;
 import com.example.project_toy.product.product.repository.ProductRepository;
 import com.example.project_toy.product.product.entity.Product;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +29,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    @Transactional
+
     public ProductResponseDto getByProductNo(int productNo){
-        Product product = productRepository.getReferenceById(productNo);
+        Product product = productRepository.findById(productNo).orElseThrow(ProductNotFoundException::new);
         return ProductResponseDto.toEntity(product);
     }
 

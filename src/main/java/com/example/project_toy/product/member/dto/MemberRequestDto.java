@@ -21,12 +21,11 @@ public class MemberRequestDto {
         this.registdate = registdate;
     }
 
-    public static Member create(MemberRequestDto requestDto, String grade) {
+    public static Member create(MemberRequestDto requestDto) {
         return Member.builder()
                 .name(requestDto.getName())
                 .cash(requestDto.getCash())
                 .registdate(requestDto.getRegistdate())
-                .grade(grade)
                 .build();
     }
 }

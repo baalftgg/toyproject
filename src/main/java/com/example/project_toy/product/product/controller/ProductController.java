@@ -21,13 +21,11 @@ public class ProductController {
 
     @PostMapping("/register")
     public ResponseEntity<ProductResponseDto> createProduct(@Valid @RequestBody ProductSaveRequestDto productSaveRequestDto) {
-
         ProductResponseDto response = productService.registerProduct(productSaveRequestDto);
-
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     public ResponseEntity<List> listProducts() {
         List<Product> product = productService.listProducts();
         return ResponseEntity.ok().body(product);

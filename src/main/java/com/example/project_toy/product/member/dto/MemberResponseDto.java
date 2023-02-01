@@ -14,7 +14,6 @@ public class MemberResponseDto {
     private String name;
     private int cash;
     private Date registdate;
-    private String grade;
 
     public static MemberResponseDto toEntity(Member member) {
         return MemberResponseDto.builder()
@@ -22,7 +21,6 @@ public class MemberResponseDto {
                 .name(member.getName())
                 .cash(member.getCash())
                 .registdate(member.getRegistdate())
-                .grade(member.getGrade())
                 .build();
     }
 }
