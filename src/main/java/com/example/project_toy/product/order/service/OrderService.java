@@ -40,7 +40,7 @@ public class OrderService {
 
     public GradeEntity grading(long period) {
 
-        List<GradeEntity> gradeEntityList = gradeRepository.findAll(Sort.by(Sort.Direction.ASC,"period"));
+        List<GradeEntity> gradeEntityList = gradeRepository.findAll();
 
         GradeEntity grade = gradeEntityList.get(0);
 

@@ -31,7 +31,7 @@ public class ProductService {
 
 
     public ProductResponseDto getByProductNo(int productNo){
-        Product product = productRepository.findById(productNo).orElseThrow(ProductNotFoundException::new);
+        Product product = productRepository.findById(productNo).orElseThrow(() -> new ProductNotFoundException());
         return ProductResponseDto.toEntity(product);
     }
 

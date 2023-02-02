@@ -1,6 +1,5 @@
 package com.example.project_toy.product.member.entity;
 
-import com.example.project_toy.product.member.dto.MemberRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
